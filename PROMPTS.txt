@@ -1,0 +1,111 @@
+## Week 12 — Initial Prompt
+
+# Week [XX] — Zendu: AI-Powered Learning Paths
+
+## Project Overview
+Build a web app called **Zendu** — a topic-based learning platform where users can explore
+short learning paths made up of video modules and finish with a knowledge quiz.
+
+This is a clean rebuild of an earlier EdTech project. Drop all Web3/NFT/blockchain features.
+No MetaMask, no Solidity, no Firebase. Keep it simple, fast, and useful.
+
+## Stack
+- React + Vite
+- Tailwind CSS for styling
+- Supabase for auth and database
+- Vercel for deployment
+- Anthropic API (via Vercel serverless function) for AI-generated quiz questions
+
+## App Structure
+
+### Pages / Views
+1. **Home / Topic Browser** — Grid of available learning topics with title, description,
+   category tag, and difficulty badge. Search bar to filter topics.
+
+2. **Learning Path** — Once a topic is selected, show a list of 5–8 modules in order.
+   Each module has a title and a short YouTube embed (or placeholder). Mark modules as
+   complete as the user works through them. Show overall progress as a progress bar.
+
+3. **Quiz** — After completing all modules, show a 5-question multiple choice quiz.
+   Questions are generated dynamically via the Anthropic API based on the topic name.
+   Show score at the end with a simple "well done" or "try again" message.
+
+4. **My Progress** (logged-in only) — Show which topics are completed, in progress,
+   or wishlisted. Simple three-tab layout.
+
+### Auth
+- Supabase email/password auth
+- Login and Register modals (no separate pages)
+- Progress and wishlist only saved if logged in; guest users can still browse and do quizzes
+
+## Database (Supabase)
+Create these tables:
+
+**topics**
+- id, title, description, category, difficulty, thumbnail_url, created_at
+
+**modules**
+- id, topic_id, title, video_url, order_index
+
+**user_progress**
+- id, user_id, topic_id, completed_modules (array), status (not_started/in_progress/completed),
+  quiz_score, updated_at
+
+**user_wishlist**
+- id, user_id, topic_id
+
+Seed the database with 3 sample topics:
+1. "Healthy Eating" — category: Health, difficulty: Beginner — 5 modules
+2. "Personal Finance Basics" — category: Finance, difficulty: Beginner — 5 modules
+3. "Mindfulness & Focus" — category: Wellbeing, difficulty: Beginner — 5 modules
+
+Use real YouTube video URLs where possible, or placeholders.
+
+## AI Quiz Generation
+Create a Vercel serverless function at `api/quiz.js` that:
+- Accepts a topic name via POST request body
+- Calls the Anthropic API (claude-sonnet-4-20250514) to generate 5 multiple choice questions
+  about that topic
+- Returns JSON: array of { question, options: [A,B,C,D], correct_answer }
+- Prompt the model to return ONLY valid JSON, no markdown or preamble
+
+## Design
+- Clean, calm aesthetic — whites, soft greens, warm neutrals
+- Mobile-first responsive layout
+- Card-based topic grid
+- Progress bars for learning path completion
+- Simple, encouraging quiz results screen
+
+## Standard 52-apps Requirements
+
+### About This Build tab
+Include a collapsible or tabbed "About This Build" section with:
+- **The Problem:** Learning new topics is easy to start but hard to finish. Most people
+  abandon courses. Zendu uses short video modules and a quiz to make completion feel achievable.
+- **The App:** Browse topics, watch short modules in order, take an AI-generated quiz,
+  and track your progress across topics.
+- **Prompts:** Link to PROMPTS.txt in the GitHub repo
+- **GitHub:** Link to the repo
+
+### Files to create
+- `PROMPTS.txt` — paste this full prompt inside, labelled `## Week [XX] — Initial Prompt`
+- `README.md` — project name, description, how to run locally, reference to PROMPTS.txt
+- `vite.config.js` — set base path to `/week[XX]/` for Vercel subdirectory routing
+
+### Environment variables needed
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `ANTHROPIC_API_KEY` (server-side only, in the serverless function)
+
+## What NOT to build
+- No MetaMask or crypto wallets
+- No NFTs or blockchain anything
+- No Python backend
+- No admin content management panel
+- No payments or premium tiers
+- No social features
+
+Keep it lean. The goal is a working, good-looking learning app that someone could actually use.
+
+## Follow-up
+- User clarified: deploy at root path (no `/week12/` base), this is a standalone project.
