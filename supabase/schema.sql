@@ -78,20 +78,20 @@ on conflict (id) do nothing;
 -- Seed modules
 insert into modules (topic_id, title, video_url, order_index) values
   ('healthy-eating', 'Macronutrients in 5 minutes', 'https://www.youtube.com/embed/fR3NxCR9z2U', 1),
-  ('healthy-eating', 'How to read a nutrition label', 'https://www.youtube.com/embed/ceFOG7CUQac', 2),
-  ('healthy-eating', 'Building a balanced plate', 'https://www.youtube.com/embed/9_HRpVfeoCw', 3),
+  ('healthy-eating', 'How to read a nutrition label', 'https://www.youtube.com/embed/eO-OYGWdc5U', 2),
+  ('healthy-eating', 'Building a balanced plate', 'https://www.youtube.com/embed/W458a21H0zo', 3),
   ('healthy-eating', 'Hydration & energy', 'https://www.youtube.com/embed/9iMGFqMmUFs', 4),
-  ('healthy-eating', 'Small habits that stick', 'https://www.youtube.com/embed/OMOGaugKpzs', 5),
+  ('healthy-eating', 'Small habits that stick', 'https://www.youtube.com/embed/1gdkBt9it84', 5),
 
   ('personal-finance-basics', 'Budgeting fundamentals', 'https://www.youtube.com/embed/HQzoZfc3GwQ', 1),
-  ('personal-finance-basics', 'Emergency funds explained', 'https://www.youtube.com/embed/2myqsbpUYjg', 2),
-  ('personal-finance-basics', 'Understanding interest', 'https://www.youtube.com/embed/Yyx6vSBVUyU', 3),
+  ('personal-finance-basics', 'Emergency funds explained', 'https://www.youtube.com/embed/gNYpH5Ik1EI', 2),
+  ('personal-finance-basics', 'Understanding interest', 'https://www.youtube.com/embed/Rm6UdfRs3gw', 3),
   ('personal-finance-basics', 'Intro to investing', 'https://www.youtube.com/embed/gFQNPmLKj1k', 4),
-  ('personal-finance-basics', 'Avoiding common money traps', 'https://www.youtube.com/embed/aT3v_USpHd0', 5),
+  ('personal-finance-basics', 'Avoiding common money traps', 'https://www.youtube.com/embed/lMKPWL9dpgo', 5),
 
   ('mindfulness-and-focus', 'What mindfulness actually is', 'https://www.youtube.com/embed/w6T02g5hnT4', 1),
   ('mindfulness-and-focus', 'A 5-minute breathing practice', 'https://www.youtube.com/embed/inpok4MKVLM', 2),
-  ('mindfulness-and-focus', 'Training focused attention', 'https://www.youtube.com/embed/zTuR1q12gKM', 3),
-  ('mindfulness-and-focus', 'Handling distraction', 'https://www.youtube.com/embed/HBcsr6jcW2E', 4),
+  ('mindfulness-and-focus', 'Training focused attention', 'https://www.youtube.com/embed/gPwxHU7MUJs', 3),
+  ('mindfulness-and-focus', 'Handling distraction', 'https://www.youtube.com/embed/Hu4Yvq-g7_Y', 4),
   ('mindfulness-and-focus', 'Building a daily habit', 'https://www.youtube.com/embed/ssss7V1_eyA', 5)
 on conflict do nothing;
